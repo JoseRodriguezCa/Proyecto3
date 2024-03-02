@@ -1,6 +1,6 @@
-import { carta } from './src/components/Carta';
 import { URL_API } from './src/components/URL_API'
 import './style.css'
+import { carta } from './src/components/Carta/Carta'
 
 
 
@@ -23,3 +23,15 @@ const nose = async () => {
 }
 
 nose()
+
+
+window.onload = function() {
+  const images = document.querySelectorAll('imgCarta');
+  images.forEach(img => {
+    img.addEventListener('load', function() {
+      const parent = this.parentNode.parentNode;
+      const rowHeight = parent.clientHeight / 3 - 10; // Calcula la altura de la fila
+      parent.style.gridAutoRows = rowHeight + 'px'; // Aplica la altura calculada a las filas
+    });
+  });
+}

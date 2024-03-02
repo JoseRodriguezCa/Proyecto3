@@ -1,0 +1,132 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin: 25px auto;
+  }
+  /* .profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  } */
+  .profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  
+  }
+  .user-name {
+    color: black;
+    display: flex;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    gap: 5px;
+    margin: 20px;
+  
+  }
+  .image-container {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .image-container img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .button-container {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .button {
+    padding: 5px 10px;
+    margin: 0 5px 0 10px;
+    border: 1px solid  rgb(173, 173, 173);
+    border-radius: 5px;
+    background-color: white;
+    color: rgb(173, 173, 173); 
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .button:focus {
+    color: black;
+    border-color: black;
+  }
+  
+  #add-button {
+    margin: 0;
+  }
+  
+  #heartButton:hover {
+    color: white ;
+    background-color: rgb(255, 95, 95);
+    border-color: rgb(255, 95, 95);
+  }
+  
+  .button-download {
+    display: flex;
+  }
+  
+  #download {
+    margin: 0;
+    border-bottom-right-radius: 0%;
+    border-top-right-radius: 0%;
+    border-right: none;
+  }
+  
+  #down-arrow {
+    margin: 0 10px 0 0;
+    border-bottom-left-radius: 0%;
+    border-top-left-radius: 0%;
+  }
+
+@media only screen and (min-width: 1024px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr; /* Una columna */
+        grid-template-rows: auto auto auto; /* Tres filas automáticas */
+        grid-gap: 10px; /* Espacio entre las celdas */
+      }
+      
+      .user-name {
+        grid-row: 1; /* Primera fila */
+      }
+      
+      .image-container {
+        grid-row: 2; /* Segunda fila */
+      }
+      
+      .button-container {
+        grid-row: 3; /* Tercera fila */
+        display: flex;
+        justify-content: space-between; /* Distribuye los botones a lo largo del contenedor */
+      }
+      
+      .add-container,
+      .button-download {
+        display: flex;
+      }
+      
+      .button {
+        background-color: #f0f0f0;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+      
+      .imgCarta {
+        width: 100%; /* Ajusta la imagen al 100% del contenedor */
+      }
+      
+      .profile-img {
+        width: 50px; /* Ajusta el tamaño de la imagen del perfil */
+        height: 50px;
+        border-radius: 50%; /* Hace que la imagen del perfil sea redonda */
+      }
+}

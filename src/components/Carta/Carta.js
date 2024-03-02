@@ -1,4 +1,4 @@
-
+import './carta.css'
 
 export const carta = (element) => {
         
@@ -14,8 +14,15 @@ export const carta = (element) => {
         </div>
 
         <div class="button-container">
-        <button class="button fa-solid fa-heart"></button>
-            <button class="button ">Descargar</button>
+            <div class="add-container">
+                <button id="heartButton" class="button fa-solid fa-heart"></button>
+                <button id="add-button" class="button fa-solid fa-plus"></button>
+            </div>
+            
+            <div class="button-download">
+                <button id="download" class="button">Descargar</button>
+                <button id="down-arrow" class="button fa-solid fa-chevron-down"></button>
+            </div>
         </div>
     </div>`
 
