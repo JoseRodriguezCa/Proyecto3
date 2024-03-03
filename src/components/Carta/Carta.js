@@ -1,3 +1,4 @@
+import { URL_API } from '../URL_API'
 import './carta.css'
 
 export const carta = (element) => {
@@ -30,7 +31,6 @@ export const carta = (element) => {
 }
 
 
-
 export const cartaEscritorio = (element) => {
     return `    <div class="card">
     <img src="${element.urls.regular}" alt="Imagen" class="card-image">
@@ -50,3 +50,21 @@ export const cartaEscritorio = (element) => {
   </div>
     `
 }
+
+
+export const pintarCarta = async () => {
+    const anchoVentana = window.innerWidth
+    const divApp = document.querySelector("#app");
+    const divContainer = document.createElement('div')
+    divApp.append(divContainer)
+    divContainer.classList = 'container'
+      const data = await URL_API('gato', 1)
+      data.results.forEach(element => {
+        if(anchoVentana >= 900){
+          divContainer.innerHTML += cartaEscritorio(element)
+        }else{
+          divContainer.innerHTML += carta(element)
+        }
+        return divApp
+    });
+    }
