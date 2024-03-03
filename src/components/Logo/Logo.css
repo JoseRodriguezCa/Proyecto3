@@ -1,3 +1,4 @@
+@media only screen and (min-width: 900px) {
 .logo {
     margin-left: 15px;
     border-radius: 50%;
@@ -10,4 +11,18 @@
 
 .logo img {
     width: 50px;
+}
+}
+
+.logo {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    cursor: pointer;
+}
+
+.logo img {
+    width: 40px;
 }
