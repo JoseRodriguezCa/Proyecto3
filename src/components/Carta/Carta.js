@@ -31,7 +31,7 @@ export const carta = (element) => {
 }
 
 
-export const cartaEscritorio = (element) => {
+export const cartaEscritorio =  (element) => {
     return `    <div class="card">
     <img src="${element.urls.regular}" alt="Imagen" class="card-image">
     <div class="overlay">
@@ -52,19 +52,22 @@ export const cartaEscritorio = (element) => {
 }
 
 
-export const pintarCarta = async () => {
+export const pintarCarta = async (buscado, sumPage) => {
     const anchoVentana = window.innerWidth
     const divApp = document.querySelector("#app");
     const divContainer = document.createElement('div')
     divApp.append(divContainer)
     divContainer.classList = 'container'
-      const data = await URL_API('gato', 1)
+      const data = await URL_API(buscado, sumPage)
+      console.log(sumPage)
+      console.log('dentro de pintarcarta', buscado)
       data.results.forEach(element => {
         if(anchoVentana >= 900){
           divContainer.innerHTML += cartaEscritorio(element)
         }else{
           divContainer.innerHTML += carta(element)
         }
-        return divApp
     });
+      return divApp
     }
+
