@@ -17,7 +17,7 @@ const handleScroll = () => {
     }
 }
 window.addEventListener('scroll', handleScroll);
-const carta = await pintarCarta(sumPage)
+const carta = pintarCarta(sumPage)
 document.body.append(carta);
 
 
