@@ -10,12 +10,19 @@ document.body.append(h);
 const buscador = document.querySelector('.buscador');
 buscar(sumPage);
 
+const terminoBusquedaPredeterminado = 'landscape';
+pintarCarta(terminoBusquedaPredeterminado,sumPage);
+
 const cargarContenido = () => {
     if (!solicitud && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         sumPage++;
-        pintarCarta(buscador.value, sumPage);
-        console.log(buscador.value);
-        solicitud = true;
+        if(!buscador.value){
+            pintarCarta(terminoBusquedaPredeterminado,sumPage);
+        }else{
+            pintarCarta(buscador.value, sumPage);
+            console.log(buscador.value);
+            solicitud = true;
+        }
     }
 }
 
@@ -27,13 +34,6 @@ const handleScroll = () => {
 }
 
 window.addEventListener('scroll', handleScroll);
-const cartas = async () => {
-const carta = await pintarCarta(buscador.value, sumPage)
-document.body.append(carta);
-}
-
-cartas()
-
 
 
 
