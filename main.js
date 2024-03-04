@@ -8,7 +8,7 @@ let sumPage = 1;
 const h = header();
 document.body.append(h);
 const buscador = document.querySelector('.buscador');
-buscar(sumPage);
+buscar(sumPage);buscador
 
 const terminoBusquedaPredeterminado = 'landscape';
 pintarCarta(terminoBusquedaPredeterminado,sumPage);
