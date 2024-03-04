@@ -12,6 +12,10 @@
     left: 25px;
 }
 
+.btnBuscar {
+    position: relative;
+    right: 120px;}
+
 .buscador {
     width: 100%;
     height: 100%;
@@ -36,6 +40,7 @@
 .buscador:hover{
     background-color: rgb(204, 204, 204);
 }
+
 }
 
 .divBuscador{
@@ -76,4 +81,9 @@
 .buscador:hover{
     background-color: rgb(204, 204, 204);
 }
+@media only screen and (max-width: 900px) {
+.btnBuscar {
+    display: none;
+}
 
+}
