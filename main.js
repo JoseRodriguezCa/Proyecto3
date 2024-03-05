@@ -2,6 +2,7 @@ import './style.css'
 import { header } from './src/components/Header/Header';
 import { pintarCarta } from './src/components/Carta/Carta'
 import { buscar } from './src/components/Buscador/Buscador';
+import { URL_API } from './src/components/URL_API';
 
 let solicitud = false;
 let sumPage = 1;
@@ -11,26 +12,33 @@ const buscador = document.querySelector('.buscador');
 buscar(sumPage);
 
 const terminoBusquedaPredeterminado = 'landscape';
-pintarCarta(terminoBusquedaPredeterminado,sumPage);
+URL_API(terminoBusquedaPredeterminado, sumPage).then((data) => {
+    pintarCarta(data);
+    })
 
-const cargarContenido = () => {
-    if (!solicitud && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+const cargarContenido = async () => {
+    if (!solicitud) {
+        solicitud = true;
         sumPage++;
         if(!buscador.value){
-            pintarCarta(terminoBusquedaPredeterminado,sumPage);
+            const data = await URL_API(terminoBusquedaPredeterminado, sumPage)
+            pintarCarta(data)
+            console.log("soy",data)
+            solicitud = false;
         }else{
-            pintarCarta(buscador.value, sumPage);
+            const data = await URL_API(buscador.value, sumPage)
+            pintarCarta(data)
             console.log(buscador.value);
-            solicitud = true;
+            solicitud = false;
+            console.log("soy",data)
         }
     }
 }
 
 const handleScroll = () => {
+    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
     cargarContenido();
-    setTimeout(() => {
-        solicitud = false;
-    }, 2000);
+    }
 }
 
 document.addEventListener('scroll', handleScroll);
