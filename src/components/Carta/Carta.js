@@ -67,6 +67,13 @@ export const pintarCarta = async (buscado, sumPage) => {
         }else{
           divContainer.innerHTML += carta(element)
         }
+        const heartButtons = document.querySelectorAll('.fa-heart');
+        heartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('active');
+        });
+    });
+
     });
       return divApp
     }

@@ -13,8 +13,9 @@
 }
 
 .btnBuscar {
-    position: relative;
-    right: 120px;}
+    position: absolute;
+    right: 305px;
+}
 
 .buscador {
     width: 100%;

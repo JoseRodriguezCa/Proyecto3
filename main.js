@@ -8,7 +8,7 @@ let sumPage = 1;
 const h = header();
 document.body.append(h);
 const buscador = document.querySelector('.buscador');
-buscar(sumPage);buscador
+buscar(sumPage);
 
 const terminoBusquedaPredeterminado = 'landscape';
 pintarCarta(terminoBusquedaPredeterminado,sumPage);
@@ -33,7 +33,7 @@ const handleScroll = () => {
     }, 2000);
 }
 
-window.addEventListener('scroll', handleScroll);
+document.addEventListener('scroll', handleScroll);
 
 
 
