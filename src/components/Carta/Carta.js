@@ -57,6 +57,7 @@ export const pintarCarta = async (data) => {
     const divApp = document.querySelector("#app");
     const divContainer = document.createElement('div')
     divApp.append(divContainer)
+    console.log("que soy ahora en", data)
     divContainer.classList = 'container'
       data.results.forEach(element => {
         if(anchoVentana >= 900){

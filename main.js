@@ -13,36 +13,33 @@ buscar(sumPage);
 
 const terminoBusquedaPredeterminado = 'landscape';
 URL_API(terminoBusquedaPredeterminado, sumPage).then((data) => {
-    pintarCarta(data);
-    })
+pintarCarta(data);
+})
 
 const cargarContenido = async () => {
-    if (!solicitud) {
-        solicitud = true;
-        sumPage++;
-        if(!buscador.value){
-            const data = await URL_API(terminoBusquedaPredeterminado, sumPage)
-            pintarCarta(data)
-            console.log("soy",data)
-            solicitud = false;
-        }else{
-            const data = await URL_API(buscador.value, sumPage)
-            pintarCarta(data)
-            console.log(buscador.value);
-            solicitud = false;
-            console.log("soy",data)
-        }
-    }
+if (!solicitud) {
+solicitud = true;
+sumPage++;
+if(!buscador.value){
+const data = await URL_API(terminoBusquedaPredeterminado, sumPage)
+pintarCarta(data);
+solicitud = false;
+}else{
+    console.log("estoy aca",buscador.value)
+const data = await URL_API(buscador.value, sumPage);
+pintarCarta(data);
+solicitud = false;
+}
+}
 }
 
 const handleScroll = () => {
-    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
-    cargarContenido();
-    }
+if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+cargarContenido();
+}
 }
 
 document.addEventListener('scroll', handleScroll);
-
 
 
 

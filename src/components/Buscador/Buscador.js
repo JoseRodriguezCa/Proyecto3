@@ -1,5 +1,6 @@
 import { crearBoton } from '../BtnHeader/BtnHeader'
 import { pintarCarta } from '../Carta/Carta'
+import { URL_API } from '../URL_API';
 import './Buscador.css'
 
 
@@ -26,12 +27,13 @@ export const buscar = (sumPage) => {
     const btnBuscar = document.querySelector('.btnBuscar');
     let valorBusqueda = '';
 
-    const realizarBusqueda = () => {
+    const realizarBusqueda = async () => {
         const divApp = document.querySelector('#app');
         valorBusqueda = buscador.value;
         divApp.innerHTML = '';
         console.log('Búsqueda realizada:', valorBusqueda);
-        pintarCarta(valorBusqueda, sumPage);
+        const data = await URL_API(valorBusqueda, sumPage)
+        pintarCarta(data);
     };
 
     buscador.addEventListener('keydown', (event) => {
@@ -52,7 +54,6 @@ export const buscar = (sumPage) => {
         realizarBusqueda();
     });
 
-    return valorBusqueda;
 };
 
 
