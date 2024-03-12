@@ -1,5 +1,4 @@
-import { donwloadImage, handleHeart, handleZoom } from '../ClicksCarta/ClicksCarta'
-import { URL_API } from '../URL_API'
+import { donwloadImage, handleHeart, handleZoom, inicializarBotonesCorazon } from '../ClicksCarta/ClicksCarta'
 import './carta.css'
 
 export const carta = (element) => {
@@ -17,7 +16,7 @@ export const carta = (element) => {
 
         <div class="button-container">
             <div class="add-container">
-                <button id="heartButton" class="button fa-solid fa-heart"></button>
+                <button id="heartButton"  data-cartaid="${element.id}" class="button fa-solid fa-heart"></button>
                 <button id="add-button" class="button fa-solid fa-plus"></button>
             </div>
             
@@ -36,7 +35,7 @@ export const cartaEscritorio =  (element) => {
     <img src="${element.urls.regular}" alt="Imagen" class="card-image">
     <div class="overlay">
         <div class="up-buttons">
-            <button id="heartButton" class="button fa-solid fa-heart"></button>
+            <button id="heartButton" data-cartaid="${element.id}" class="button fa-solid fa-heart"></button>
             <button id="add-button" class="button fa-solid fa-plus"></button>
         </div>
       <div class="profile-info">
@@ -53,23 +52,32 @@ export const cartaEscritorio =  (element) => {
 
 
 export const pintarCarta = async (data) => {
-    const anchoVentana = window.innerWidth
-    const divApp = document.querySelector("#app");
-    const divContainer = document.createElement('div')
-    divApp.append(divContainer)
-    console.log("que soy ahora en", data)
-    divContainer.classList = 'container'
+  const anchoVentana = window.innerWidth;
+  const divApp = document.querySelector("#app");
+  const divContainer = document.createElement('div');
+  divApp.append(divContainer);
+  console.log("que soy ahora en", data);
+  divContainer.classList = 'container';
+
+  if (data.results.length === 0) {
+      divContainer.innerHTML = '<p>No se encontraron resultados.</p>';
+  } else {
       data.results.forEach(element => {
-        if(anchoVentana >= 900){
-          divContainer.innerHTML += cartaEscritorio(element)
-        }else{
-          divContainer.innerHTML += carta(element)
-        }
-    });
-    donwloadImage(data)
-    handleHeart()
-    handleZoom()
-      return divApp
-    }
+          if (anchoVentana >= 900) {
+              divContainer.innerHTML += cartaEscritorio(element);
+          } else {
+              divContainer.innerHTML += carta(element);
+          }
+      });
+
+      donwloadImage(data);
+      handleHeart();
+      handleZoom();
+      inicializarBotonesCorazon()
+  }
+
+  return divApp;
+};
 
 
+// Función para guardar el estado del corazón en el localStorage

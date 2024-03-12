@@ -1,12 +1,45 @@
+
+
+const handleHeartClick = (event) => {
+  event.stopPropagation();
+  const heartButton = event.currentTarget;
+  const cartaId = heartButton.dataset.cartaid;
+  console.log(cartaId)
+  const nuevoEstado = !heartButton.classList.contains('active');
+  heartButton.classList.toggle('active');
+  guardarEstadoCorazon(cartaId, nuevoEstado);
+};
+
 export const handleHeart = () => {
-  const heartButtons = document.querySelectorAll(".fa-heart");
+  const heartButtons = document.querySelectorAll('.fa-heart');
+
   heartButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      button.classList.toggle("active");
-    });
+      button.removeEventListener('click', handleHeartClick);
+  });
+
+  heartButtons.forEach((button) => {
+      button.addEventListener('click', handleHeartClick);
   });
 };
+
+export const guardarEstadoCorazon = (idCarta, estado) => {
+  const estadoCorazones = JSON.parse(localStorage.getItem('estadoCorazones')) || {};
+  estadoCorazones[idCarta] = estado;
+  localStorage.setItem('estadoCorazones', JSON.stringify(estadoCorazones));
+};
+
+export const inicializarBotonesCorazon = () => {
+  const estadoCorazones = JSON.parse(localStorage.getItem('estadoCorazones')) || {};
+  const heartButtons = document.querySelectorAll('.fa-heart');
+
+  heartButtons.forEach((button) => {
+      const idCarta = button.dataset.cartaid;
+      if (estadoCorazones[idCarta]) {
+          button.classList.add('active'); 
+      }
+  });
+};
+
 export const donwloadImage = () => {
     const anchoVentana = window.innerWidth
     let downloadButtons;
