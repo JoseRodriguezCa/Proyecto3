@@ -1,3 +1,4 @@
+import { donwloadImage, handleHeart, handleZoom } from '../ClicksCarta/ClicksCarta'
 import { URL_API } from '../URL_API'
 import './carta.css'
 
@@ -21,8 +22,7 @@ export const carta = (element) => {
             </div>
             
             <div class="button-download">
-                <button id="download" class="button">Descargar</button>
-                <button id="down-arrow" class="button fa-solid fa-chevron-down"></button>
+                <button id="download" data-download-url="${element.links.download}+'&force=true'" class="button">Descargar</button>
             </div>
         </div>
     </div>`
@@ -44,7 +44,7 @@ export const cartaEscritorio =  (element) => {
         <img src="${element.user.profile_image.large}" alt="Perfil" class="profile-image">
         <p class="profile-name">${element.user.name}</p>
         </div>
-        <button id="down-arrow" class="button fa-solid fa-chevron-down"></button>
+        <button id="down-arrow" data-download-url="${element.links.download}+'&force=true'" class="button fa-solid fa-chevron-down"></button>
       </div>
     </div>
   </div>
@@ -65,14 +65,11 @@ export const pintarCarta = async (data) => {
         }else{
           divContainer.innerHTML += carta(element)
         }
-        const heartButtons = document.querySelectorAll('.fa-heart');
-        heartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            button.classList.toggle('active');
-        });
     });
-
-    });
+    donwloadImage(data)
+    handleHeart()
+    handleZoom()
       return divApp
     }
+
 

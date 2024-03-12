@@ -3,6 +3,7 @@ import { header } from './src/components/Header/Header';
 import { pintarCarta } from './src/components/Carta/Carta'
 import { buscar } from './src/components/Buscador/Buscador';
 import { URL_API } from './src/components/URL_API';
+import { handleZoom } from './src/components/ClicksCarta/ClicksCarta';
 
 let solicitud = false;
 let sumPage = 1;
@@ -36,6 +37,7 @@ solicitud = false;
 const handleScroll = () => {
 if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
 cargarContenido();
+handleZoom()
 }
 }
 

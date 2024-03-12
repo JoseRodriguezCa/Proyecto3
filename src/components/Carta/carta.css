@@ -69,13 +69,10 @@
   }
 
   #download {
-    margin: 0;
-    border-bottom-right-radius: 0%;
-    border-top-right-radius: 0%;
-    border-right: none;
+    margin: 0 10px;
   }
 
-  #down-arrow {
+  #down-arrow-m {
     margin: 0 10px 0 0;
     border-bottom-left-radius: 0%;
     border-top-left-radius: 0%;
@@ -92,7 +89,7 @@
   .container {
     width: 98%;
     height: 100%;
-  }
+}
 
   .card {
     position: relative;
@@ -100,13 +97,19 @@
     display: inline-block;
     cursor: zoom-in;
     margin-bottom: 20px;
+    transition: transform 0.3s ease;
   }
 
   .card-image {
     display: block;
     max-width: 100%;
+    border-radius: 10px;
     transition: transform 0.3s ease;
-  }
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
 
   .overlay {
     position: absolute;
@@ -126,6 +129,7 @@
 
   .card:hover .overlay {
     opacity: 1;
+    border-radius: 10px;
   }
 
   .up-buttons {
@@ -136,11 +140,6 @@
   .button:hover {
     color: black;
     border-color: black;
-  }
-
-  #down-arrow {
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
   }
 
   .profile-info {
@@ -200,4 +199,13 @@
     background-color: rgb(255, 95, 95);
     border-color: rgb(255, 95, 95);
   }
+
+  .card.zoomed {
+    transform: scale(1.5);
+    z-index: 199;
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+}
 }
