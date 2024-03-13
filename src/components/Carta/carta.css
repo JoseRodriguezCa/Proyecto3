@@ -1,4 +1,8 @@
 @media only screen and (max-width: 900px) {
+  #app {
+    width: 100%;
+  }
+
   .container {
     margin-top: 90px;
   }
@@ -76,6 +80,27 @@
     margin: 0 10px 0 0;
     border-bottom-left-radius: 0%;
     border-top-left-radius: 0%;
+  }
+
+  .no-results{
+    position: absolute;
+    color: black;
+    width: 80%;
+    top: 25%;
+    left: 10% !important;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    left: 30%;
+    border: 5px solid black;
+    border-radius: 20px;
+    padding: 20px 20px 20px 30px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    background-color: rgb(144, 173, 164);
+    user-select: none;
   }
 }
 
@@ -207,5 +232,25 @@
     -moz-transform: scale(1.5);
     -ms-transform: scale(1.5);
     -o-transform: scale(1.5);
+}
+
+
+.no-results{
+  color: black;
+  width: 40%;
+  font-size: 50px;
+  font-style: italic;
+  font-weight: bold;
+  position: absolute;
+  left: 30%;
+  border: 5px solid black;
+  border-radius: 20px;
+  padding: 20px 20px 20px 30px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  background-color: rgb(144, 173, 164);
+  user-select: none;
 }
 }

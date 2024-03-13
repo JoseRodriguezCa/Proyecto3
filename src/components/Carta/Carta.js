@@ -60,7 +60,7 @@ export const pintarCarta = async (data) => {
   divContainer.classList = 'container';
 
   if (data.results.length === 0) {
-      divContainer.innerHTML = '<p>No se encontraron resultados.</p>';
+    divApp.innerHTML = '<p class="no-results" >No se encontraron resultados.</p>';
   } else {
       data.results.forEach(element => {
           if (anchoVentana >= 900) {
@@ -78,6 +78,3 @@ export const pintarCarta = async (data) => {
 
   return divApp;
 };
-
-
-// Función para guardar el estado del corazón en el localStorage
